@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>jQuery Handlers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+      $(function(){
+        alert('Hello!');
+        $('#form1').submit(function() {   // here .submit is a handler that is listening for a form submission: "if you hear the submit happen, do this..."
+        console.log($(this).serialize()); // .serialize preps the form data being submitted and puts it into an array for machine interpretation
+        return false
+        });
+        $('.btn').click(function(){
+            $('#form1').submit();      // in this case, .submit is being used to perform the function of "submitting" the form, aka a hard-submit
+        });                            // ... note that the hard-submit goes up to the submit "listener" and executes that function!
+      });
+    </script>
+  </head>
+  <body>
+    <form id='form1' action='process.php' method="post">
+        First Name<input type="text" name="first_name">
+        Last Name<input type="text" name="last_name">
+        Email<input type="text" name="email">
+        <input type="submit" value="submit!">
+    </form>
+
+    <button class="btn">Click me to use .submit() differently</button>
+  </body>
+</html>
